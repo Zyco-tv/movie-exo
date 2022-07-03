@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import  Header from './components/Header';
 import Pagecontent from './components/Page-content';
+import Pagecontentdetails from './components/Page-content-details';
 
 const Baseapp = styled.div`
   text-align: center;

@@ -12,7 +12,6 @@ const Img = styled.img`
   height: 18%;
   margin-left: 10px;
   margin-right: 10px;
-  border: 1px solid blue;
     src: url(${props => props.src});
 `
 
