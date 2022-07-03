@@ -16,9 +16,10 @@ const Input = styled.input.attrs(props => ({
     font-size: 1em;
     border: 2px solid gray;
     border-radius: 3px;
-    width: 60%;
     margin: ${props => props.size};
     padding: ${props => props.size};
+    padding-left: 26%;
+    padding-right: 26%;
   `;
 
 export default class Header extends React.Component {
