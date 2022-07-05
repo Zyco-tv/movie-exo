@@ -16,17 +16,23 @@ const Img = styled.img`
     src: url(${props => props.src});
 `
 function Pagecontent() {
-    const [movies] = useState<any[]>([]);
+    const [movies, setMovies] = useState<any[]>([]);
   
     useEffect(() => {
         movieService.getMoviePopular()
+        .then((results) => {
+            setMovies(results);
+            console.log(results);
+        })
     }, [])
       return (
         <ul>
           {movies.map(movie => (
             <EqualDivider>
-              <p>YO</p>
+              <li key={movie.id}>
+                <p>{movie.title}</p>
                 <Img src={movie.poster_path} />
+              </li>
             </EqualDivider>
           ))}
         </ul>
