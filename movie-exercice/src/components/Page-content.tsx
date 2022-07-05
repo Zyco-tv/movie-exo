@@ -1,5 +1,6 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import movieService from '../services/movie.service';
 
 const EqualDivider = styled.div`
   display: flex;
@@ -14,19 +15,22 @@ const Img = styled.img`
   margin-right: 10px;
     src: url(${props => props.src});
 `
+function Pagecontent() {
+    const [movies] = useState<any[]>([]);
+  
+    useEffect(() => {
+        movieService.getMoviePopular()
+    }, [])
+      return (
+        <ul>
+          {movies.map(movie => (
+            <EqualDivider>
+              <p>YO</p>
+                <Img src={movie.poster_path} />
+            </EqualDivider>
+          ))}
+        </ul>
+      );
+  }
 
-export default class Pagecontent extends React.Component {
-    render() {
-        return (
-            <React.Fragment>
-                <EqualDivider>
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                </EqualDivider>
-            </React.Fragment>
-        );
-    }
-}
+  export default Pagecontent;

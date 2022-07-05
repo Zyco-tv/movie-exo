@@ -14,6 +14,7 @@ function App() {
       <Baseapp>
       <Header></Header>
       <Pagecontent></Pagecontent>
+      {/* <Pagecontentdetails></Pagecontentdetails> */}
       </Baseapp>
     </div>
   );
