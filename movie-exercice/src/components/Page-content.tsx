@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import movieService from '../services/movie.service';
+import Movie from '../models/movie';
 
 const EqualDivider = styled.div`
   display: flex;
@@ -15,28 +16,24 @@ const Img = styled.img`
   margin-right: 10px;
     src: url(${props => props.src});
 `
-function Pagecontent() {
-    const [movies, setMovies] = useState<any[]>([]);
-  
-    useEffect(() => {
-        movieService.getMoviePopular()
-        .then((results) => {
-            setMovies(results);
-            console.log(results);
-        })
-    }, [])
-      return (
-        <ul>
-          {movies.map(movie => (
-            <EqualDivider>
-              <li key={movie.id}>
-                <p>{movie.title}</p>
-                <Img src={movie.poster_path} />
-              </li>
-            </EqualDivider>
-          ))}
-        </ul>
-      );
+export default class Pagecontent extends React.Component {
+  state = {
+    movies: new Array<Movie>()
   }
 
-  export default Pagecontent;
+  componentDidMount() {
+    movieService.getMoviePopular()
+      .then(res => {
+        const movies: Movie[] = res;
+        this.setState({ movies });
+      })
+  }
+
+  render() {
+    return (
+      <ul>
+        { this.state.movies.map(movie => <li>{movie.title}</li>)}
+      </ul>
+    )
+  }
+}

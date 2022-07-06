@@ -7,7 +7,7 @@ export class MovieService {
 
     public async getMoviePopular(): Promise<Array<Movie>> {
         const response = await http.get('/movie/popular');
-        return response.data;
+        return response.data.results;
     }
 
     public async getMovieSearch(): Promise<Array<Movie>> {
