@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import movieService from '../services/movie.service';
 import Movie from '../models/movie';
+import { HashRouter, Route, Link, Switch } from "react-router-dom";
+import Pagecontentdetails from './Page-content-details';
+import { render } from "react-dom";
+import App from '../App';
+
 
 const EqualDivider = styled.div`
   
@@ -28,12 +33,23 @@ export default class Pagecontent extends React.Component {
 
   render() {
     return (
+      
       <React.Fragment>
         { this.state.movies.map(movie => 
-                    <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-           
+        <HashRouter>
+        <Switch>
+          <Route path="/api/movie/:movie_id" component={Pagecontentdetails} />
+          <div>
+            <Link to={"/api/movie/" + movie.id}>
+              <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
+              </Link>
+          </div>
+        </Switch>
+      </HashRouter>
         )}
        </React.Fragment>
     )
   }
 }
+const rootElement = document.getElementById("root");
+render(<App />, rootElement);

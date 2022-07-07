@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import movieService from '../services/movie.service';
+import Movie from '../models/movie';
+
 
 const EqualDivider = styled.div`
   display: flex;
@@ -19,31 +22,28 @@ const SecondDivider = styled.div`
   flex-direction: column;
   text-align: start;
 `;
-
-export const Pagecontentdetails = () => {
-  const [result, setResult] = useState<number | undefined>();
-  useEffect(() => {
-    add();
-  });
-
-  function add() {
-    const a: number = 5;
-    const b: number = 10;
-    setResult(a + b);
+export default class Pagecontentdetails extends React.Component {
+  state = {
+    movies: new Array<Movie>()
   }
-  return (
-    <div className="p-3">
-      <h3>Added Sum is: {result}</h3>
+
+  componentDidMount() {
+    movieService.getMovieDetails()
+      .then(res => {
+        const movies: Movie = res;
+        this.setState({ movies });
+      })
+  }
+
+  render() {
+    return (
+      
       <EqualDivider>
                     <SecondDivider>
-                    <h1>Titre du film</h1>
-                    <p>lorem ipsum dolor sit amet, consectetur adipis</p>
-                    <p>5/10</p>
                     </SecondDivider>
                     <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
-                </EqualDivider>
-    </div>
-  );
-};
 
-export default Pagecontentdetails;
+                </EqualDivider>
+    )
+  }
+}
