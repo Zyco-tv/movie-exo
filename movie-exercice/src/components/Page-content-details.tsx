@@ -40,6 +40,7 @@ export default class Pagecontentdetails extends React.Component {
       
       <EqualDivider>
                     <SecondDivider>
+                        <h1>{this.state.movies.title}</h1>
                     </SecondDivider>
                     <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
 
