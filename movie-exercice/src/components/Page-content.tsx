@@ -7,6 +7,7 @@ const EqualDivider = styled.div`
   display: flex;
   padding-left: 19%;
   padding-right: 19%;
+  flex-wrap: wrap;
 `;
 
 const Img = styled.img`
@@ -14,7 +15,7 @@ const Img = styled.img`
   height: 18%;
   margin-left: 10px;
   margin-right: 10px;
-    src: url(${props => props.src});
+  src: url(${props => props.src});
 `
 export default class Pagecontent extends React.Component {
   state = {
@@ -31,9 +32,14 @@ export default class Pagecontent extends React.Component {
 
   render() {
     return (
-      <ul>
-        { this.state.movies.map(movie => <li>{movie.title}</li>)}
-      </ul>
+      <React.Fragment>
+        { this.state.movies.map(movie => 
+                <EqualDivider>
+                    <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
+                </EqualDivider>
+           
+        )}
+       </React.Fragment>
     )
   }
 }
