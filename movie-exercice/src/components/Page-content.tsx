@@ -39,11 +39,9 @@ export default class Pagecontent extends React.Component {
         <HashRouter>
         <Switch>
           <Route path="/api/movie/:movie_id" component={Pagecontentdetails} />
-          <div>
             <Link to={"/api/movie/" + movie.id}>
               <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
               </Link>
-          </div>
         </Switch>
       </HashRouter>
         )}
