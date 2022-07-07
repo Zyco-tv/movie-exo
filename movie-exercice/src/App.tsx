@@ -8,12 +8,19 @@ const Baseapp = styled.div`
   text-align: center;
 `;
 
+const Content = styled.div`
+  padding-left: 15%;
+  padding-right: 15%;
+`;
+
 function App() {
   return (
     <div className="App">
       <Baseapp>
       <Header></Header>
+      <Content>
       <Pagecontent></Pagecontent>
+      </Content>
       {/* <Pagecontentdetails></Pagecontentdetails> */}
       </Baseapp>
     </div>
