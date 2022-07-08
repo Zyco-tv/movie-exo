@@ -23,15 +23,15 @@ const SecondDivider = styled.div`
   text-align: start;
 `;
 export default class Pagecontentdetails extends React.Component {
-  state = {
-    movies: new Array<Movie>()
-  }
+  state = { 
+    movie: {} as Movie
+  };
 
   componentDidMount() {
     movieService.getMovieDetails()
       .then(res => {
-        const movies: Movie = res;
-        this.setState({ movies });
+        const movie: Movie = res;
+        this.setState({ movie });
       })
   }
 
@@ -40,10 +40,15 @@ export default class Pagecontentdetails extends React.Component {
       
       <EqualDivider>
                     <SecondDivider>
+                    <h1>{this.state.movie.title}</h1>
+                    <p>{this.state.movie.overview}</p>
+                    <p>{this.state.movie.popularity}</p>
                     </SecondDivider>
-                    <Img src="https://images.affiches-et-posters.com//albums/3/56170/affiche-film-joker.jpg" />
+                    <Img src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} />
 
                 </EqualDivider>
     )
   }
 }
+
+
