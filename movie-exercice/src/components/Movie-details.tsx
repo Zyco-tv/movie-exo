@@ -62,6 +62,7 @@ export default class MovieDetails extends React.Component<MovieDetailsPropsInter
           <SecondDivider>
             <h1>{this.state.movie.title}</h1>
             <p>{this.state.movie.overview}</p>
+            <p>{this.state.movie.vote_average}/10</p>
           </SecondDivider>
           <Img src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} />
         </EqualDivider>

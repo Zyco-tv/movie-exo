@@ -4,14 +4,14 @@ import Header from './components/Header';
 import Pagecontent from './components/Page-content';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import MovieDetails from './components/Movie-details';
+import InputApp from './components/Input';
 
 const Baseapp = styled.div`
   text-align: center;
 `;
 
 const Content = styled.div`
-  padding-left: 15%;
-  padding-right: 15%;
+  
 `;
 
 export default class App extends React.Component {
@@ -25,7 +25,7 @@ export default class App extends React.Component {
             <Route exact path='/movie/:movie_id' component={MovieDetails} />
             <Route>
               <div className="App">
-
+              <InputApp></InputApp>
                 <Content>
                   <Pagecontent></Pagecontent>
                 </Content>

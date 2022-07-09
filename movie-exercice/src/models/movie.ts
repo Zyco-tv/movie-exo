@@ -4,4 +4,5 @@ export default interface Movie {
     overview: string,
     poster_path: string,
     popularity: number,
+    vote_average: number,
   }
