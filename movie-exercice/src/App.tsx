@@ -19,19 +19,20 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route exact path='/movie/:movie_id' component={MovieDetails} />
-          <Route>
-            <div className="App">
-              <Baseapp>
-                <Header></Header>
+        <Baseapp>
+          <Header></Header>
+          <Switch>
+            <Route exact path='/movie/:movie_id' component={MovieDetails} />
+            <Route>
+              <div className="App">
+
                 <Content>
                   <Pagecontent></Pagecontent>
                 </Content>
-              </Baseapp>
-            </div>
-          </Route>
-        </Switch>
+              </div>
+            </Route>
+          </Switch>
+        </Baseapp>
       </Router>);
   }
 }

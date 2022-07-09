@@ -58,11 +58,12 @@ export default class MovieDetails extends React.Component<MovieDetailsPropsInter
     if (this.state.movie !== undefined) {
       return (
         <EqualDivider>
-          <Img src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} />
+          
           <SecondDivider>
             <h1>{this.state.movie.title}</h1>
             <p>{this.state.movie.overview}</p>
           </SecondDivider>
+          <Img src={'https://image.tmdb.org/t/p/w500' + this.state.movie.poster_path} />
         </EqualDivider>
       )
     } else {
