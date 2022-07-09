@@ -17,20 +17,21 @@ const Content = styled.div`
 export default class App extends React.Component {
 
   render() {
-    return (<Router>
-      <Switch>
-        <Route exact path='/movie/:movie_id' component={MovieDetails} />
-        <Route>
-          <div className="App">
-            <Baseapp>
-              <Header></Header>
-              <Content>
-                <Pagecontent></Pagecontent>
-              </Content>
-            </Baseapp>
-          </div>
-        </Route>
-      </Switch>
-    </Router>);
+    return (
+      <Router>
+        <Switch>
+          <Route exact path='/movie/:movie_id' component={MovieDetails} />
+          <Route>
+            <div className="App">
+              <Baseapp>
+                <Header></Header>
+                <Content>
+                  <Pagecontent></Pagecontent>
+                </Content>
+              </Baseapp>
+            </div>
+          </Route>
+        </Switch>
+      </Router>);
   }
 }

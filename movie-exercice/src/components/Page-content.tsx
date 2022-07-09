@@ -43,5 +43,4 @@ export default class Pagecontent extends React.Component {
     )
   }
 }
-// const rootElement = document.getElementById("root");
-// render(<App />, rootElement);
+// render(<App />, document.getElementById("root"));

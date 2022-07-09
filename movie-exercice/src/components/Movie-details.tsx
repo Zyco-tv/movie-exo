@@ -30,11 +30,24 @@ export interface MovieDetailsStateInterface {
   movie?: Movie;
 }
 
+export interface MovieDetailsParamsInterface {
+  movie_id: number;
+}
 export default class MovieDetails extends React.Component<MovieDetailsPropsInterface, MovieDetailsStateInterface> {
  
+  constructor(props: MovieDetailsPropsInterface) {
+    super(props);
+    this.state = {
+      movie: undefined
+    }
+  }
+  
   componentDidMount() {
-    movieService.getMovieDetails(this.props.match.params as number)
+    console.log('ici');
+    const params = this.props.match.params as MovieDetailsParamsInterface;
+    movieService.getMovieDetails(params.movie_id)
       .then(res => {
+        console.log(res);
         const movie: Movie = res;
         this.setState({ movie });
       })
