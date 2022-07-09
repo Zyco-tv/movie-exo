@@ -38,8 +38,8 @@ export default class Pagecontent extends React.Component {
         { this.state.movies.map(movie => 
         <HashRouter>
         <Switch>
-          <Route path="/:movie_id" component={Pagecontentdetails} />
-            <Link to={"" + movie.id}>
+          <Route path="/movie/:movie_id" component={Pagecontentdetails} />
+            <Link to={"/movie/" + movie.id}>
               <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
               </Link>
         </Switch>

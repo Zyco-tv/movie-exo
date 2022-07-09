@@ -15,7 +15,7 @@ export class MovieService {
         return response.data;
     }
 
-    public async getMovieDetails(): Promise<Movie> {
+    public async getMovieDetails(movie_id: number): Promise<Movie> {
         const response = await http.get('/api/movie/{movie_id}');
         return response.data;
     }

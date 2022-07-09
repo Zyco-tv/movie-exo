@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react'
 import styled from 'styled-components';
 import movieService from '../services/movie.service';
 import Movie from '../models/movie';
+import { useParams } from "react-router-dom";
 
 
 const EqualDivider = styled.div`
@@ -22,13 +23,18 @@ const SecondDivider = styled.div`
   flex-direction: column;
   text-align: start;
 `;
+
 export default class Pagecontentdetails extends React.Component {
   state = { 
     movie: {} as Movie
   };
 
+  constructor(props: any) {
+    super(props);
+  }
+
   componentDidMount() {
-    movieService.getMovieDetails()
+    movieService.getMovieDetails(params.movie_id)
       .then(res => {
         const movie: Movie = res;
         this.setState({ movie });
