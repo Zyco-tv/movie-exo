@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import movieService from '../services/movie.service';
 import Movie from '../models/movie';
 import { HashRouter, Route, Link, Switch } from "react-router-dom";
-import Pagecontentdetails from './Page-content-details';
+import Pagecontentdetails from './Movie-details';
 import { render } from "react-dom";
 import App from '../App';
 
@@ -33,21 +33,15 @@ export default class Pagecontent extends React.Component {
 
   render() {
     return (
-      
       <React.Fragment>
-        { this.state.movies.map(movie => 
-        <HashRouter>
-        <Switch>
-          <Route path="/movie/:movie_id" component={Pagecontentdetails} />
-            <Link to={"/movie/" + movie.id}>
-              <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-              </Link>
-        </Switch>
-      </HashRouter>
+        {this.state.movies.map(movie =>
+          <Link to={"/movie/" + movie.id}>
+            <Img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
+          </Link>
         )}
-       </React.Fragment>
+      </React.Fragment>
     )
   }
 }
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+// const rootElement = document.getElementById("root");
+// render(<App />, rootElement);

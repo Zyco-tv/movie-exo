@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import  Header from './components/Header';
+import Header from './components/Header';
 import Pagecontent from './components/Page-content';
-import Pagecontentdetails from './components/Page-content-details';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import MovieDetails from './components/Movie-details';
 
 const Baseapp = styled.div`
   text-align: center;
@@ -13,18 +14,23 @@ const Content = styled.div`
   padding-right: 15%;
 `;
 
-function App() {
-  return (
-    <div className="App">
-      <Baseapp>
-      <Header></Header>
-      <Content>
-      <Pagecontent></Pagecontent>
-      </Content>
-      {/* <Pagecontentdetails></Pagecontentdetails> */}
-      </Baseapp>
-    </div>
-  );
-}
+export default class App extends React.Component {
 
-export default App;
+  render() {
+    return (<Router>
+      <Switch>
+        <Route exact path='/movie/:movie_id' component={MovieDetails} />
+        <Route>
+          <div className="App">
+            <Baseapp>
+              <Header></Header>
+              <Content>
+                <Pagecontent></Pagecontent>
+              </Content>
+            </Baseapp>
+          </div>
+        </Route>
+      </Switch>
+    </Router>);
+  }
+}
